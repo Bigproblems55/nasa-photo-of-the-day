@@ -16,6 +16,12 @@ let [search,setSearch] = useState(false);
 const handleBar = (event)=>{
   setDate(event.target.value)
   console.log('date'+date)
+  // Create new Date instance
+var d = new Date(date)
+
+// Add a day
+d.setDate(d.getDate() + 1)
+console.log(d)
 }
 const handleSearch = ()=>{
   setSearch(true);

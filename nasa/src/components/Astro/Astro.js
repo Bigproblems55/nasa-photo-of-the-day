@@ -66,7 +66,7 @@ const Astro = ({handleContainer,props,isImg}) => {
                 
               </AstroImgD> 
 
-              {handleContainer()}
+              {handleContainer}
             </AstroCard>
             
           );
