@@ -36,11 +36,12 @@ const TheCards = styled.div`
 
 
 
-function Container() {
+function Container({handleContainer, date}) {
   return (
       <TheContainer>
           <TheCards>
-              <Astros />
+              <Astros handleContainer={handleContainer}
+              date={date}/>
           </TheCards>
       </TheContainer>
   );

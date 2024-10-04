@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
 import "./App.css";
 // import Astros from "./components/Astro/Astros";
@@ -9,13 +9,29 @@ const AppStyle = styled.div`
       text-align: center;
 `;
 
+
 function App() {
+let [date,setDate] = useState();
+let [search,setSearch] = useState(false);
+const handleBar = (event)=>{
+  setDate(event.target.value)
+  console.log('date'+date)
+}
+const handleSearch = ()=>{
+  setSearch(true);
+}
+const handleContainer = () =>{
+  setSearch(false);
+}
   return (
     <>
-    <Container />
+    {search && <Container date={date}
+    handleContainer={handleContainer}/>}
     <AppStyle>
       
-      <SearchBar />
+      <SearchBar date={date} 
+      handleSearch={handleSearch}
+      handleBar={handleBar}/>
     </AppStyle>
     </>
   );

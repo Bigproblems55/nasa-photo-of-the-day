@@ -26,18 +26,25 @@ const astroFn = (nasaPhotos,reqGet) =>{
 
 };
 
-const Astros = () =>{
+const Astros = ({handleContainer,date}) =>{
 
     // Set a new apikey if there is no more room for this one
-    const [apiKey, setApiKey] = useState('7MH99v254pwUt83ewWyggb86uQjDcbUCJrAzM2xf');
+    const [apiKey, setApiKey] = useState('oOHj8XprJeMREMpoWeU0Fi7hHKsz7bVwdu9vxdgr');
     const [reqGet, setReqGet] = useState([{}]);
     const [theImg, setTheImg] = useState(null);
     const [count,setCount] = useState(4);
     const [nasaPhotos,setNasaPhotos] = useState([{}]);
-    const reUrl = ["https://api.nasa.gov/planetary/apod?api_key="+apiKey+"&hd=false&start_date=2020-02-01&end_date=2020-02-01",
-    "https://api.nasa.gov/planetary/apod?api_key="+apiKey+"&hd=false&start_date=2020-02-02&end_date=2020-02-03",
+    const reUrl = ["https://api.nasa.gov/planetary/apod?api_key="+apiKey+"&hd=false&start_date=2020-02-01&end_date=2020-02-02",
+    `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&hd=false&start_date=${date}&end_date=2021-12-13`,
     "https://api.nasa.gov/planetary/apod?api_key="+apiKey+"&hd=false&count="+count] ;
-    const [reqUrl,setReqUrl] = useState(reUrl[1]);
+    const [reqUrl,setReqUrl] = useState(state=>{
+        if(date !== undefined){
+            return (state,reUrl[1])
+        }else{
+
+            return (state,reUrl[0])
+        }
+    });
     // let url = reUlr[1];
     useEffect(() =>{
         
@@ -88,7 +95,8 @@ const Astros = () =>{
         <div>
         {
             reqGet.map( (e) =>{
-               return  <Astro key={e} props={e} isImg={e.media_type} />
+               return  (<Astro handleContainer={handleContainer}
+               key={e.id} props={e} isImg={e.media_type} />)
             })
         }
         </div>

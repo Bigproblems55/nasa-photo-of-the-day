@@ -41,7 +41,7 @@ const AstroImgD = styled.div`
     flex-direction: column;
 `;
 
-const Astro = ({props,isImg}) => {
+const Astro = ({handleContainer,props,isImg}) => {
 
         const title = props.title;
         const description = props.explanation;
@@ -63,8 +63,12 @@ const Astro = ({props,isImg}) => {
               <AstroImgD>
                 <Media url={url} isImg={isImg}/>
                 <p>{date}</p>
+                
               </AstroImgD> 
+
+              {handleContainer()}
             </AstroCard>
+            
           );
         }
 };
