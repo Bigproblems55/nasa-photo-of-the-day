@@ -12,18 +12,35 @@ const AppStyle = styled.div`
 
 function App() {
 let [date,setDate] = useState();
+let [endDate,setEnddate] = useState();
 let [search,setSearch] = useState(false);
+
+function formatDate(date) {
+  var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [year, month, day].join('-');
+}
+
+
 const handleBar = (event)=>{
   setDate(event.target.value)
   console.log('date'+date)
-  // Create new Date instance
-var d = new Date(date)
-
-// Add a day
-d.setDate(d.getDate() + 1)
-console.log(d)
+  
 }
 const handleSearch = ()=>{
+  var d = new Date(date)
+
+// Add a day
+d.setDate(d.getDate() + 2) 
+setEnddate(formatDate(d));
   setSearch(true);
 }
 const handleContainer = () =>{
@@ -31,7 +48,7 @@ const handleContainer = () =>{
 }
   return (
     <>
-    {search && <Container date={date}
+    {search && <Container endDate={endDate}date={date}
     handleContainer={handleContainer}/>}
     <AppStyle>
       
