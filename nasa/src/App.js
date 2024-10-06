@@ -44,18 +44,25 @@ setEnddate(formatDate(d));
   setSearch(true);
 }
 const handleContainer = () =>{
+  console.log('handlcontainer')
+  setDate(null);
+  setEnddate(null);
   setSearch(false);
 }
   return (
     <>
-    {search && <Container endDate={endDate}date={date}
-    handleContainer={handleContainer}/>}
-    <AppStyle>
+    {search && date && endDate && <Container endDate={endDate}date={date}
+    handleContainer={handleContainer}/>
+    }
+    {
+      !search && <AppStyle>
       
       <SearchBar date={date} 
       handleSearch={handleSearch}
       handleBar={handleBar}/>
     </AppStyle>
+    }
+    
     </>
   );
 }

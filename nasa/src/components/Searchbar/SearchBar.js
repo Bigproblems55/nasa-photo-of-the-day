@@ -9,7 +9,7 @@ const SearchBar = ({date,handleBar,handleSearch}) =>{
             </div>
             <h1>Welcome To NASA </h1>
             <input value={date} onChange={(e)=>handleBar(e)}type="text"/>
-            <button onClick={handleSearch}>search</button>
+            <button onClick={handleSearch}>yyyy-mm-dd</button>
         </div>
     );
 
